@@ -1,0 +1,38 @@
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-paper-plane"></div>
+                                <div class="title">ADMIN</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            {foreach $menu as $key=>$val}
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table{$key}">
+                                    <span class="icon fa fa-table"></span><span class="title">{$val['Name']}</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                {if !empty($val['son'])}
+                                <div id="dropdown-table{$key}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            {foreach $val['son'] as $v}
+                                            <li ><a href="{$v['Url']}"><span class="icon"></span>{$v['Name']}</a>
+                                            </li>
+                                            {/foreach}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {/if}
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
